@@ -1,0 +1,47 @@
+1. Sign-up API (For Client User and Ops User)
+POST http://localhost:3000/register
+Content-Type: application/json
+{
+  "username": "john_doe",
+  "password": "password123",
+  "roleName": "Client User"
+}
+
+2. Login API (For Client User and Ops User)
+POST http://localhost:3000/login
+Content-Type: application/json
+{
+  "username": "john_doe",
+  "password": "password123"
+}
+
+
+3. Email Verification API (For Client User)
+POST http://localhost:3000/verify-email
+Content-Type: application/json
+{
+  "email": "john_doe@example.com"
+}
+
+
+4. Upload File API (Only Ops User)
+POST http://localhost:3000/upload
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVJZCI6MiwiaWF0IjoxNzMxODY5MTI5fQ.HaDTMgwipvi8zErah4U8WcEIPWdaE8V1XgocjVV5OZI
+Content-Type: multipart/form-data
+
+file=@path_to_file/file.pptx
+
+
+5. List Files API (For Client User)
+GET http://localhost:3000/files
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVJZCI6MiwiaWF0IjoxNzMxODY5MTI5fQ.HaDTMgwipvi8zErah4U8WcEIPWdaE8V1XgocjVV5OZI
+
+
+6. Download File API (For Client User with Encrypted URL)
+GET http://localhost:3000/download/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVJZCI6MiwiaWF0IjoxNzMxODY5MTI5fQ.HaDTMgwipvi8zErah4U8WcEIPWdaE8V1XgocjVV5OZI
+
+
+7. File Download via Encrypted URL (For Client User)
+GET http://localhost:3000/download/your_encrypted_download_token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVJZCI6MiwiaWF0IjoxNzMxODY5ODQ5fQ.4XYmfp3f3YN0Fm1jyHRYFGlHeH2XjtgOQymthNG0sfA
