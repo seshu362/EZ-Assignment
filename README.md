@@ -1,216 +1,34 @@
-# Authentication
+# File Sharing App
 
-Given an `app.js` file and a database file `userData.db` consisting of a  table `user`.
+This is a simple **File Sharing App** built with **Express.js** and **SQLite** that allows users to upload and download files. The app implements role-based authentication and provides a way for users to manage their files.
 
-Write APIs to perform operations on the table `user` containing the following columns,
+## Features
 
-**User Table**
+- **User Registration**: Register as either an Ops User or Client User.
+- **User Login**: Log in using a username and password.
+- **File Upload**: Ops Users can upload files.
+- **File Listing**: Client Users can view the files they uploaded.
+- **File Download**: Generate a download link for the files you uploaded.
+  
+## Technologies Used
 
-| Column   | Type    |
-| -------- | ------- |
-| username | TEXT |
-| name     | TEXT    |
-| password | TEXT    |
-| gender   | TEXT    |
-|location|TEXT|
+- **Express.js** for building the backend server.
+- **SQLite** as the database.
+- **Bcrypt** for password hashing.
+- **JWT (JSON Web Tokens)** for user authentication.
+- **Multer** for handling file uploads.
+  
+## Installation
 
-### API 1
-
-#### Path: `/register`
-
-#### Method: `POST`
-
-**Request**
-
+1. Install the dependencies:
+```bash
+   npm install
 ```
-{
-  "username": "adam_richard",
-  "name": "Adam Richard",
-  "password": "richard_567",
-  "gender": "male",
-  "location": "Detroit"
-}
+2. Create the SQLite database (fileSharingApp.db) and tables:
+The tables will be automatically created when you run the server. However, you can initialize the database by running:
+```
+node app.js
 ```
 
-- **Scenario 1**
+3. The app will be running on http://localhost:3000.
 
-  - **Description**:
-
-    If the username already exists
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      User already exists
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the registrant provides a password with less than 5 characters
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Password is too short
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful registration of the registrant
-
-  - **Response**
-      - **Status code**
-        ```
-        200
-        ```
-      - **Status text**
-       ```
-       User created successfully
-       ```
-
-### API 2
-
-#### Path: `/login`
-
-#### Method: `POST`
-
-**Request**
-```
-{
-  "username": "adam_richard",
-  "password": "richard_567"
-}
-```
-
-- **Scenario 1**
-
-  - **Description**:
-
-    If an unregistered user tries to login
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid user
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the user provides incorrect password
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid password
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful login of the user
-
-  - **Response**
-    - **Status code**
-      ```
-      200
-      ```
-    - **Status text**
-      ```
-      Login success!
-      ```
-
-### API 3
-
-#### Path: `/change-password`
-
-#### Method: `PUT`
-
-**Request**
-
-```
-{
-  "username": "adam_richard",
-  "oldPassword": "richard_567",
-  "newPassword": "richard@123"
-}
-```
-
-- **Scenario 1**
-
-  - **Description**:
-
-    If the user provides incorrect current password
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Invalid current password
-      ```
-
-- **Scenario 2**
-
-  - **Description**:
-
-    If the user provides new password with less than 5 characters
-
-  - **Response**
-    - **Status code**
-      ```
-      400
-      ```
-    - **Status text**
-      ```
-      Password is too short
-      ```
-
-- **Scenario 3**
-
-  - **Description**:
-
-    Successful password update
-
-  - **Response**
-    - **Status code**
-      ```
-      200
-      ```
-    - **Status text**
-      ```
-      Password updated
-      ```
-
-
-<br/>
-
-Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
