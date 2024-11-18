@@ -32,3 +32,55 @@ node app.js
 
 3. The app will be running on http://localhost:3000.
 
+
+## API Endpoints
+**1. Sign-up API (For Client User and Ops User)**
+- **Path :** `` /register``
+- **Metthod :** `` /POST``
+- **Request body :**
+  ```bash
+  {
+    "username": "john_doe",
+    "password": "password123",
+    "roleName": "Client User"
+  }
+  ```
+**2. Login API (For Client User and Ops User)**
+- **Path :** `` /login``
+- **Metthod :** ``/POST``
+- **Request body :**
+  ```bash
+  {
+    "username": "john_doe",
+    "password": "password123"
+  }
+  ```
+**3. Email Verification API (For Client User)**
+- **Path :** `` /verify-email``
+- **Metthod :** `` /POST``
+- **Request body :**
+  ```bash
+  {
+     "email": "john_doe@example.com"
+  }
+  ```
+**4. Upload File API (Only Ops User)**
+- **Path :** `` /upload``
+- **Metthod :** ``/POST``
+- **Content-Type :** ``multipart/form-data``
+- **Request body :**
+  ```bash
+  {
+    file=@path_to_file/file.pptx
+  }
+  ```
+**5. List Files API (For Client User)**
+- **Path :** `` /files``
+- **Metthod :** `` /GET``
+- **Authorization :** ``Bearer "jwt_token"``
+
+**6. Download File API (For Client User with Encrypted URL)**
+- **Path :** `` /download/:fileId``
+- **Metthod :** `` /GET``
+- **Authorization :** ``Bearer "jwt_token"``  
+  
